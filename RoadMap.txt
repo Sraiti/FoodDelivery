@@ -3,8 +3,31 @@ Food Delivery App Road Map
 
 
 
-2.[ ] - Hooking up MongoDB
-1.[ ] - Setting up Express
-3.[ ] - Setting up local ENV variables
-4.[ ] - Creating a base layout HTML file
-5.[ ] - Setting up our MVC folder structure
+2 .[x] - Hooking up MongoDB
+1 .[x] - Setting up Express
+3 .[x] - Setting up local ENV variables
+4 .[x] - Creating a base layout HTML file
+5 .[x] - Setting up our MVC folder structure
+6 .[x] - Creating the User model 
+        User{
+            name : String,
+            email : String,
+            password : String,
+            role : String,
+            timestamps
+        }
+7 .[ ] - Creating Auth System
+    7.1 .[ ] create registering
+    7.2 .[ ] create login
+    7.3 .[ ] create passport
+8 .[ ] - Creating Order model
+        Order{
+            orderName:String,
+            orderPrice:currency,
+            orderImage:String,
+            isCostum:boolean,    
+            timestamps
+        }
+9 .[ ] - Creating Order controller
+10.[ ] - Interact with our database to Create custom orders 
+  
