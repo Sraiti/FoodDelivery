@@ -1,0 +1,32 @@
+<% if(typeof errors != 'undefined'){ errors.forEach(element => {%>
+<div
+  class="m-2 text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+  role="alert"
+>
+  <label class="block sm:inline"><%= element.msg %></label>
+</div>
+<% });} %> 
+
+
+<% if(success_msg != ''){ %>
+<div  class="text-center bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md m-2" role="alert""
+role="alert">
+  <%= success_msg %>
+</div>
+<% } %>
+
+<% if(error_msg != ''){ %>
+  <div  class="text-center m-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+  role="alert">
+    <%= error_msg %>
+  
+  </div>
+  <% } %> 
+  
+  <% if(error != ''){ %>
+  <div   class="m-2 text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+  role="alert">
+    <%= error %>
+    
+  </div>
+  <% } %>
