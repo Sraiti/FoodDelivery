@@ -9,17 +9,19 @@ const port = 3000 || process.env.PORT;
 const indexRouter = require("./routes/index");
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
+const usersRouter = require("./routes/users");
+
 const flash = require("connect-flash");
 const session = require("express-session");
-const passport = require('passport');
+const passport = require("passport");
 
-app.set("views", __dirname + "/views");
+app.set("views", __dirname + "/resources/views");
 app.use(expressLayout);
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-require('./config/passport')(passport);
+require("./config/passport")(passport);
 //Express Session
 app.use(
   session({
@@ -44,10 +46,17 @@ app.use(function (req, res, next) {
   next();
 });
 
+// Global middleware
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  res.locals.user = req.user;
+  next();
+});
 //routes
 app.use("/", indexRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
+app.use('/users',usersRouter);
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,

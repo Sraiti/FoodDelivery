@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const { loginSchema } = require("../app/validation/validaion");
 const passport = require('passport');
-
+ 
 router.get("/", (req, res) => {
-  res.render("auth/login");
+  res.render('auth/login');
 });
 router.post("/", (req, res,next) => {
   let errors = [];
@@ -19,7 +19,7 @@ router.post("/", (req, res,next) => {
     errors.push({
       msg: message,
     });
-    res.render("auth/login", {
+    res.render('auth/login', {
       errors,
       email,
       password,
