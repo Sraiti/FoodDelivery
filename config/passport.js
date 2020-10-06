@@ -1,10 +1,8 @@
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const userModel = require("../app/model/user");
-const passport = require('passport');
+const passport = require("passport");
 
-
- 
 module.exports = function (passport) {
   passport.use(
     new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
@@ -13,18 +11,20 @@ module.exports = function (passport) {
         .then((user) => {
           if (!user) {
             return done(null, false, {
-              message: "that email is not registerd",
+              message: "that email is not registerd",    
             });
           }
 
-          //MAtching the Password
+          //Matching the Password
 
           bcrypt.compare(password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (isMatch) {
               done(null, user);
             } else {
-              done(null, false, { message: "password dosen't match" });
+              done(null, false, {
+                message: "password dosen't match",
+              });
             }
           });
         })
