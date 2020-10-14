@@ -10,6 +10,7 @@ const indexRouter = require("./routes/index");
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const usersRouter = require("./routes/users");
+const menuItemsRouter = require("./routes/menuItems");
 
 const flash = require("connect-flash");
 const session = require("express-session");
@@ -56,19 +57,20 @@ app.use((req, res, next) => {
 app.use("/", indexRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
-app.use('/users',usersRouter);
+app.use("/users", usersRouter);
+app.use("/menuItems", menuItemsRouter);
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
-  useFindAndModify: false 
+  useFindAndModify: false,
 });
 const db = mongoose.connection;
 
-db.on("error", console.error.bind(console, "connection error:"));
+db.on("error", (error) => console.error("Database connection error:", error));
 db.once("open", function () {
   console.log("MongDB connected");
 });
 app.get("/", (req, res) => res.send("Hello World!"));
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`MaklaExpress listening on port ${port}!`));

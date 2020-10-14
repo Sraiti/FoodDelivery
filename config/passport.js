@@ -11,7 +11,7 @@ module.exports = function (passport) {
         .then((user) => {
           if (!user) {
             return done(null, false, {
-              message: "that email is not registerd",    
+              message: "that email is not registerd",
             });
           }
 
@@ -38,7 +38,9 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  userModel.findById(id, (err, user) => {
-    done(err, user);
-  });
+  userModel
+    .findById(id, (err, user) => {
+      done(err, user);
+    })
+    .catch((err) => console.log(err));
 });

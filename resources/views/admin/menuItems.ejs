@@ -1,0 +1,79 @@
+<div class="py-6 align-middle flex flex-col min-w-full sm:px-6 lg:px-8">
+  <div
+    class="rounded-t-lg overflow-hidden border-t border-l border-r border-gray-400 text-right p-4"
+  >
+    <form action="/menuItems/new" method="GET">
+      <button
+        class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+      >
+        Add new Items
+      </button>
+    </form>
+  </div>
+
+  <div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div
+          class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
+        >
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+              <tr>
+                <th
+                  class="px-3 py-2 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Image
+                </th>
+                <th
+                  class="px-3 py-2 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Name
+                </th>
+                <th
+                  class="px-3 py-2 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Price
+                </th>
+                <th
+                  class="px-3 py-2 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Size
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <% items.forEach(element => { %>
+              <form action="/menuItems/edit/<%= element.id %>" method="GET">
+                <tr class="h-16">
+                  <td class="px-2 py-4 whitespace-no-wrap">
+                    <img
+                      src="<%=element.image.substr(6)%>"
+                      class="w-16 md:w-32 lg:w-48 rounded-sm"
+                      alt="<%= element.name  %> "
+                    />
+                  </td>
+                  <td class="px-1 py-3"><%= element.name %></td>
+                  <td class="px-1 py-3"><%= element.price+'\tMAD' %></td>
+                  <td class="px-3 py-3"><%= element.size %></td>
+                  <td
+                    class="px-5 py-3 whitespace-no-wrap text-right text-sm leading-5 font-medium"
+                  >
+                    <button
+                      class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                      type="submit"
+                    >
+                      Edit
+                    </button>
+                    
+                  </td>
+                </tr>
+              </form>
+              <%}); %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

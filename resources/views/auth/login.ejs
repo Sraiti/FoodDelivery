@@ -5,12 +5,9 @@
       method="POST"
       class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
     >
-    <%- include('../partials/messages.ejs') %>   
+      <%- include('../partials/messages.ejs') %>
       <div class="mb-4">
-        <label
-          class="block text-gray-700 text-sm font-bold mb-2"
-          for="email"
-        >
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
           Email
         </label>
         <input
@@ -42,13 +39,13 @@
       </div>
       <div class="flex items-center justify-between">
         <button
-          class="btn-primary text-purple-500 hover:text-white hover:bg-purple-500 border border-purple-500 text-xs font-semibold rounded-full py-2 px-5 focus:outline-none focus:shadow-outline"
+          class="btn-primary text-gray-600 hover:text-white hover:bg-gray-700  border border-gray-600 text-xs font-semibold rounded-full py-2 px-5 focus:outline-none focus:shadow-outline"
           type="submit"
         >
           Log In
         </button>
         <a
-          class="inline-block align-baseline font-bold text-sm"
+          class="inline-block align-baseline font-bold text-sm  hover:text-gray-600"
           href="/register"
         >
           Don't have account?

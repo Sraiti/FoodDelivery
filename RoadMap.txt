@@ -16,18 +16,19 @@ Food Delivery App Road Map
             role : String,
             timestamps
         }
-7 .[ ] - Creating Auth System
-    7.1 .[ ] create registering
-    7.2 .[ ] create login
-    7.3 .[ ] create passport
-8 .[ ] - Creating Order model
-        Order{
-            orderName:String,
-            orderPrice:currency,
-            orderImage:String,
-            isCostum:boolean,    
-            timestamps
+7 .[x] - Creating Auth System
+    7.1 .[x] create registering
+    7.2 .[x] create login
+    7.3 .[x] create passport
+8 .[x] - Creating menuItem  model
+        MenuItem{
+            name:String,
+            price:currency,
+            image:String,
+            size,            
+            timestamps,
         }
-9 .[ ] - Creating Order controller
-10.[ ] - Interact with our database to Create custom orders 
+9 .[x] - Creating menuItem UI
+10.[ ] - Creating menuItem route
+
   

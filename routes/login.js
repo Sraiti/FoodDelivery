@@ -28,14 +28,14 @@ router.post("/", (req, res, next) => {
       successRedirect: "/",
       failureRedirect: "/login",
       failureFlash: true,
+      failWithError: "/login",
     })(req, res, next);
   }
 });
-router.get('/logout', (req, res) => {
+router.get("/logout", (req, res) => {
   req.logout();
-  req.flash('success_msg', 'You are logged out');
-  res.redirect('/login');
+  req.flash("success_msg", "You are logged out");
+  res.redirect("/login");
 });
-
 
 module.exports = router;

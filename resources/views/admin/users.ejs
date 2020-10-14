@@ -18,62 +18,109 @@
                   class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                   Role
                 </th>
-                <th class="px-4 py-3 bg-gray-50"></th>
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
               <% users.forEach(item => { %>
-                <form action="/users/<%= item.id %>" method="POST">
-              <tr>
-                <td class="px-2 py-4 whitespace-no-wrap">
-                  <div class="flex items-center">
-                    <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-gray-900">
-                        <%= item.name %>
-                      </div>
-                      <div class="text-sm leading-5 text-gray-500">
-                        <%= item.email %>
+              <form action="/users/<%= item.id %>" method="POST">
+                <tr>
+                  <td class="px-2 py-4 whitespace-no-wrap">
+                    <div class="flex items-center">
+                      <div class="ml-4">
+                        <div class="text-sm leading-5 font-medium text-gray-900">
+                          <%= item.name %>
+                        </div>
+                        <div class="text-sm leading-5 text-gray-500">
+                          <%= item.email %>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-                <td class="px-1 py-4 whitespace-no-wrap">
-                  <span
-                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    Active
-                  </span>
-                </td>
-                <td class="w-20 px-1 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                  <div class="inline-block relative w-64">
-                    <select
-                      name="role"
-                      class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                      <option <% if (item.role=='admin') { %> 
-                        selected="selected"  
-                        <% } %>
-                      >
-                        Admin
-                      </option>
-                      <option <% if (item.role=='customer') { %> 
-                         selected="selected"  
-                        <% } %>
-                        >
-                        Customer
-                      </option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                      </svg>
+                  </td>
+                  <td class="px-1 py-4 whitespace-no-wrap">
+                    <span
+                      class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      Active
+                    </span>
+                    <span
+                      class="<%= user.email == item.email ? '' : 'hidden'  %> px-2 inline-flex text-xs leading-5 font-semibold rounded-full border-blue-400 text-gray-100 bg-blue-400">
+                      You
+                    </span>
+                  </td>
+                  <td class="w-20 px-1 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                    <div class="inline-block relative w-64">
+                      <select name="role"
+                        class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                        <option <% if (item.role=='admin') { %> selected="selected" <% } %>>
+                          Admin
+                        </option>
+                        <option <% if (item.role=='customer') { %> selected="selected" <% } %>>
+                          Customer
+                        </option>
+                      </select>
+                      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                      </div>
                     </div>
-                  </div>
-                 </td>
-                <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                  <button class="text-indigo-600 hover:text-indigo-900" type="submit">
-                    Update</button>
-                </td>
+                  </td>
+                  <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium ">
+                    <button
+                      class="ml-1 mr-1 border-teal-500 hover:border-gray-500 bg-green-200 text-gray-800 hover:text-indigo-400 font-bold py-2 px-4 border-b-4 rounded"
+                      type="submit">
+                      Update</button>
+              </form>
+              <button
+                class="ml-1 mr-1 float-right  bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-gray-500 hover:text-gray-200 rounded"
+                onclick="toggleModal('modal-id')">
+                Delete</button>
+              </td>
               </tr>
-            </form>
+              <form action="/users/delete/<%= item.id %> " method="GET">
+                <div
+                  class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
+                  id="modal-id">
+                  <div class="relative w-auto my-6 mx-auto max-w-3xl">
+                    <!--content-->
+                    <div
+                      class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                      <!--header-->
+                      <div class="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
+                        <h3 class="text-3xl font-semibold">
+                          Confirmation
+                        </h3>
+                        <button
+                          class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                          onclick="toggleModal('modal-id')">
+                          <span
+                            class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                            ×
+                          </span>
+                        </button>
+                      </div>
+                      <!--body-->
+                      <div class="relative p-6 flex-auto">
+                        <p class="my-4 text-gray-600 text-lg leading-relaxed">
+                          Are you sure you want to Delete <%= item.name %>
+                        </p>
+                      </div>
+                      <!--footer-->
+                      <div class="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
+                        <button
+                          class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
+                          type="button" style="transition: all .15s ease" onclick="toggleModal('modal-id')">
+                          Close
+                        </button>
+                        <button
+                          class="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                          type="submit" style="transition: all .15s ease">
+                          Confirme
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
               <% }); %>
             </tbody>
           </table>
@@ -82,3 +129,13 @@
     </div>
   </div>
 </div>
+
+
+
+<script>
+  function toggleModal(modalID) {
+    console.log('modal show');
+    document.getElementById(modalID).classList.toggle("hidden");
+    document.getElementById(modalID).classList.toggle("flex");
+  }
+</script>
