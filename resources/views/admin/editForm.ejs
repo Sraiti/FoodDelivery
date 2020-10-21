@@ -79,7 +79,7 @@
             <span class="mt-2 text-base leading-normal">Select an image</span>
           </label>
         </div>
-        <input  class="w-20 float-right m-5 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-gray-500 rounded" 
+        <input  class="w-20 float-right m-5 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-gray-500 rounded" type="button"
         value="Delete" onclick="toggleModal('modal-id')" /> 
 
         <input
@@ -130,9 +130,7 @@
 
 <script>
     function toggleModal(modalID){
-    document.getElementById(modalID).classList.toggle("hidden");
-     document.getElementById(modalID).classList.toggle("flex");
+     document.getElementById(modalID).classList.toggle("hidden");
+    document.getElementById(modalID).classList.toggle("flex");
    }
-
-  
 </script>

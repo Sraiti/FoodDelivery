@@ -1,5 +1,5 @@
   <div class="bg-white shadow-md rounded px-8 pt-6 mb-2 flex flex-col mt-3 ml-3 mr-3">
-    <span class=" <%= newItem.name != '' ? '' : 'hidden'  %> text-sm font-medium bg-green-100 py-1 px-2 rounded text-green-500 align-middle"><%=  newItem.name +'\tadded' %></span>
+    <span class=" <%= newItem.name != '' ? '' : 'hidden'  %> text-sm font-medium bg-green-100 py-1 px-2 rounded text-green-500 align-middle m-4"><%=  newItem.name +'\tadded' %></span>
     <div class="-mx-3 md:flex mb-6">
       <div class="md:w-1/2 px-3 mb-6 md:mb-0">
         <form action="/menuItems" method="POST" enctype="multipart/form-data">

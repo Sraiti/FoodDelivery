@@ -11,6 +11,8 @@ const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const usersRouter = require("./routes/users");
 const menuItemsRouter = require("./routes/menuItems");
+const cartRouter = require("./routes/cart");
+const path =require("path");
 
 const flash = require("connect-flash");
 const session = require("express-session");
@@ -19,8 +21,10 @@ const passport = require("passport");
 app.set("views", __dirname + "/resources/views");
 app.use(expressLayout);
 app.set("view engine", "ejs");
+ 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 require("./config/passport")(passport);
 //Express Session
@@ -59,16 +63,21 @@ app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/users", usersRouter);
 app.use("/menuItems", menuItemsRouter);
+app.use("/cart", cartRouter);
 
-mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
+mongoose
+  .connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log("DB server connect"))
+  .catch((e) => console.log("\tDB error\n", e));
+
 const db = mongoose.connection;
 
-db.on("error", (error) => console.error("Database connection error:", error));
+db.on("error", (error) => console.error("\tDatabase connection error:\n", error));
 db.once("open", function () {
   console.log("MongDB connected");
 });

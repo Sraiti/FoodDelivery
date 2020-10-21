@@ -29,6 +29,12 @@ Food Delivery App Road Map
             timestamps,
         }
 9 .[x] - Creating menuItem UI
-10.[ ] - Creating menuItem route
+10.[x] - Creating menuItem route
+11.[x] - Creating Home Page
+12.[ ] - Creating Oders route
+13.[ ] - Creating Cart System
+14.[ ] - Creating Tracking System
+15.[ ] - Creating Orders Managing System 
+
 
   

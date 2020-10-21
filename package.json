@@ -5,11 +5,16 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "author": "Abdellatif Sraiti",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.20.0",
     "bcrypt": "^5.0.0",
     "connect-flash": "^0.1.1",
     "ejs": "^3.1.5",
@@ -20,13 +25,20 @@
     "joi": "^17.2.1",
     "mongoose": "^5.10.7",
     "multer": "^1.4.2",
+    "noty": "^3.2.0-beta",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "tailwindcss": "^1.8.10"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
-    "nodemon": "^2.0.4"
+    "laravel-mix": "^5.0.7",
+    "nodemon": "^2.0.4",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.27.0",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.12"
   }
 }
