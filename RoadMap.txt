@@ -31,8 +31,13 @@ Food Delivery App Road Map
 9 .[x] - Creating menuItem UI
 10.[x] - Creating menuItem route
 11.[x] - Creating Home Page
-12.[ ] - Creating Oders route
-13.[ ] - Creating Cart System
+12.[x] - Creating Cart route
+13.[x] - Install Laravel Mix
+            - setup js and scss
+14.[x] - Create Cart page
+            - order summary section
+            - empty cart section           
+13.[x] - Creating Cart System
 14.[ ] - Creating Tracking System
 15.[ ] - Creating Orders Managing System 
 
