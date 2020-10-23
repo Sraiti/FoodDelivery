@@ -2,21 +2,11 @@ const { ensureAuthenticated } = require("../middleware/auth");
 const express = require("express");
 const cartRouter = express.Router();
 
-
-
-
-
 cartRouter.get("/", ensureAuthenticated, (req, res) => {
-
-   res.render("user/cart");
-
+  res.render("user/cart");
 });
 
-
 cartRouter.post("/", ensureAuthenticated, (req, res) => {
- 
-
-  console.log(req.body);
   // for the first time creating cart and adding basic object structure
   if (!req.session.cart) {
     req.session.cart = {
@@ -27,7 +17,6 @@ cartRouter.post("/", ensureAuthenticated, (req, res) => {
   }
   let cart = req.session.cart;
 
-  console.log(cart);
   // Check if item does not exist in cart
   if (!cart.items[req.body._id]) {
     cart.items[req.body._id] = {
