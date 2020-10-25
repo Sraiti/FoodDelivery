@@ -75,7 +75,7 @@ let socket = io()
 if(order) {
     socket.emit('join', `order_${order._id}`)
 }
- let adminAreaPath = window.location.pathname
+let adminAreaPath = window.location.pathname
 if(adminAreaPath.includes('admin')) {
   console.log('socket ini admin');
     initAdmin(socket)

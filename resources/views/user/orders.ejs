@@ -1,0 +1,49 @@
+<section class="orders light-section">
+  <div class="py-6 align-middle flex flex-col min-w-full sm:px-6 lg:px-8">
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div
+            class="items-center border-b border-gray-300 pb-4"
+          >
+            <h1 class="p-4 font-bold ml-4 text-2xl text-gray-800">All orders</h1>
+            <table class="min-w-full divide-y divide-gray-200 border">
+              <thead>
+                <tr >
+                  <th class="px-4 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Orders</th>
+                  <th class="px-4 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                  <th class="px-4 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Address</th>
+                  <th class="px-4 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                </tr>
+              </thead>
+              <tbody  class="bg-white divide-y divide-gray-200">
+                <% if(orders.length) { %> <% orders.forEach((order) => { %>
+                <tr>
+                  <td class="px-2 py-4 whitespace-no-wrap border">
+                    <a class="link" href="/orders/user/<%= order._id %>"
+                      ><%= order._id %></a
+                    >
+                  </td>
+                  <td class="px-2 py-4 whitespace-no-wrap border">
+                    <%= order.phone %>
+                  </td>
+                  <td class="px-2 py-4 whitespace-no-wrap border">
+                    <%= order.address %>
+                  </td>
+                  <td class="px-2 py-4 whitespace-no-wrap border">
+                    <%= moment(order.createdAt).format('hh:mm A') %>
+                  </td>
+                </tr>
+                <% }) %> <% } else { %>
+                <tr>
+                  <td class="p-4"><span>No orders found!</span></td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -2,6 +2,7 @@ const express = require("express");
 const menuRouter = express.Router();
 const menuModel = require("../app/model/menuItem");
 var multer = require("multer");
+const fs = require("fs");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -44,17 +45,18 @@ menuRouter.get("/delete/:id", ensureAdminAuthenticated, (req, res, next) => {
   const itemId = req.params.id;
   console.log(itemId);
 
-  menuModel.findByIdAndRemove(itemId, function (err, docs) {
+  menuModel.findByIdAndRemove(itemId, function(err, docs) {
     if (err) {
       console.log(err);
     } else {
-      console.log("Removed User : ", docs);
+      try {
+        fs.unlinkSync(docs.image);
+      } catch (error) {
+        console.log(error);
+      }
       menuModel.find().then((items) => {
-        console.log("then");
-        menuModel.find().then((items) => {
-          res.render("admin/menuitems", {
-            items,
-          });
+        res.render("admin/menuitems", {
+          items,
         });
       });
     }
@@ -139,7 +141,7 @@ menuRouter.post(
       menuModel.findByIdAndUpdate(
         { _id: itemId },
         { name, image: filePath, description, price, size },
-        function (err, result) {
+        function(err, result) {
           if (err) {
           } else {
             res.render("admin/editForm", {
@@ -154,7 +156,7 @@ menuRouter.post(
         { _id: itemId },
         { name, description, price, size },
         { new: true },
-        function (err, result) {
+        function(err, result) {
           if (err) {
           } else {
             res.render("admin/editForm", {
@@ -167,6 +169,5 @@ menuRouter.post(
     }
   }
 );
- 
 
 module.exports = menuRouter;
