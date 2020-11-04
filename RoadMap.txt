@@ -38,8 +38,8 @@ Food Delivery App Road Map
             - order summary section
             - empty cart section           
 13.[x] - Creating Cart System
-14.[ ] - Creating Tracking System
-15.[ ] - Creating Orders Managing System 
+14.[x] - Creating Tracking System
+15.[x] - Creating Orders Managing System 
 
 
   
