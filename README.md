@@ -2,7 +2,7 @@
 
 ## Introduction
 
-MaklaExpress e-commerce application for food delivery. Application consists of the following parts:
+MaklaExpress e-commerce application for food delivery.
 
   Technologies used : 
  <ul>
